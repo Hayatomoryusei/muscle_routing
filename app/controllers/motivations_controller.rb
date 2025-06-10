@@ -3,9 +3,9 @@ class MotivationsController < ApplicationController
 
   def index
     if user_signed_in?
-      @motivations = current_user.motivations # 自分の目標だけ
+      @motivations = current_user.motivations
     else
-      @motivations = Motivation.none # 未ログインなら空（or 全体にしたいなら .all）
+      @motivations = Motivation.none
     end
     @blogs = Blog.all
   end
@@ -14,14 +14,18 @@ class MotivationsController < ApplicationController
     @motivation = Motivation.new
   end
 
-  def create
-    @motivation = current_user.motivations.build(motivation_params)
-    if @motivation.save
-      redirect_to motivations_path, notice: "目標を設定しました！"
-    else
-      render 'new'
-    end
+def create
+  @motivation = current_user.motivations.build(motivation_params)
+
+  if @motivation.save
+    # 開発・本番問わずAPI呼び出すように修正
+    advice = ChatgptAdvisor.get_advice(@motivation.contents.to_s)
+    flash[:notice] = "目標を設定しました！ AIアドバイス：#{advice}"
+    redirect_to motivations_path
+  else
+    render :new
   end
+end
 
   def show
     @motivation = Motivation.find(params[:id])

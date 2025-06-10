@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   resources :blogs do
     resources :goods, only: [:create, :destroy]
   end
+
+  post 'ai_chats', to: 'ai_chats#create'
+
   root 'motivations#index'
 end

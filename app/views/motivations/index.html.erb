@@ -1,5 +1,9 @@
 <div class="container">
-
+  <% if notice %>
+    <div class="alert alert-info" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; background-color: #f0f8ff; font-weight: bold;">
+      <%= notice %>
+    </div>
+  <% end %>
   <!-- My Goal セクション -->
   <div class="section-title">
     <h2>My Goal</h2>
@@ -36,7 +40,7 @@
     <% end %>
   </div>
 
-  <p id="notice"><%= notice %></p>
+ 
 
   <!-- My Diary (日記) -->
   <div class="section-title">
@@ -85,3 +89,28 @@
   <% end %>
 
 </div>
+
+<div class="section-title">
+  <h2>AIアドバイザーと話してみる</h2>
+</div>
+
+<div class="section-title">
+  <h2>AIと会話する</h2>
+  <%= form_with url: ai_chats_path, method: :post, local: true do %>
+    <div>
+      <%= text_area_tag :message, nil, placeholder: "ChatGPTに質問する...", rows: 3, style: "width: 100%;" %>
+    </div>
+    <div style="margin-top: 8px;">
+      <%= submit_tag "送信", class: "btn" %>
+    </div>
+  <% end %>
+
+  <% if flash[:ai_response] %>
+    <div class="ai-response" style="margin-top: 10px; background-color: #eee; padding: 10px; border-radius: 5px;">
+      <strong>AIの回答：</strong>
+      <p><%= flash[:ai_response] %></p>
+    </div>
+  <% end %>
+</div>
+
+
