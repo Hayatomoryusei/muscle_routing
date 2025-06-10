@@ -10,3 +10,5 @@ bundle exec rake assets:precompile
 bundle exec rake assets:clean
 bundle exec rails webpacker:compile
 bundle exec rake db:migrate
+# 最後にこの1行を追加
+echo "Build script loaded"
