@@ -317,6 +317,8 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
+    sqlite3 (1.7.3)
+      mini_portile2 (~> 2.8.0)
     sqlite3 (1.7.3-x64-mingw-ucrt)
     sqlite3 (1.7.3-x64-mingw32)
     sqlite3 (1.7.3-x86_64-linux)
@@ -358,6 +360,7 @@ GEM
     zeitwerk (2.7.1)
 
 PLATFORMS
+  ruby
   x64-mingw-ucrt
   x64-mingw32
   x86_64-linux
@@ -374,6 +377,7 @@ DEPENDENCIES
   image_processing
   jbuilder (~> 2.7)
   mini_magick
+  nokogiri
   pg (~> 1.4)
   puma (~> 6.0)
   rack-mini-profiler (~> 2.0)
