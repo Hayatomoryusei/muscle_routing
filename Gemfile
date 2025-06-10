@@ -72,4 +72,4 @@ gem 'active_storage_validations'
 # Gemfile
 gem 'dotenv-rails'
 gem 'ruby-openai'
-gem 'nokogiri', platforms: :ruby
+gem 'nokogiri', '>= 1.13.0', platforms: :ruby
